@@ -1,0 +1,8 @@
+/var/log/fr24feed.log {
+  rotate 3
+  daily
+  compress
+  missingok
+  notifempty
+}
+

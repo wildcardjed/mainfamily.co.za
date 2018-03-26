@@ -1,0 +1,2 @@
+0 7 * * * root /usr/lib/fr24/fr24feed_updater.sh >> /var/log/fr24feed_update.log 2>&1
+

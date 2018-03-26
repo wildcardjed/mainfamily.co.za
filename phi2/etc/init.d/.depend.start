@@ -1,0 +1,17 @@
+TARGETS = rsyslog triggerhappy dhcpcd dump1090-mutability dirmngr motd killprocs bootlogs lighttpd dbus postfix single dphys-swapfile ssh ntp rsync cron lightdm bluetooth avahi-daemon raspi-config plymouth rc.local rmnologin
+INTERACTIVE =
+lighttpd: rsyslog
+dbus: rsyslog
+postfix: rsyslog
+single: killprocs motd bootlogs
+dphys-swapfile: rsyslog
+ssh: rsyslog
+ntp: rsyslog
+rsync: rsyslog
+cron: rsyslog
+lightdm: dbus
+bluetooth: rsyslog dbus
+avahi-daemon: dbus rsyslog
+plymouth: lighttpd rsyslog lightdm dbus triggerhappy dhcpcd bluetooth avahi-daemon dump1090-mutability dirmngr postfix motd bootlogs dphys-swapfile ssh ntp raspi-config rsync cron
+rc.local: lighttpd rsyslog lightdm dbus triggerhappy dhcpcd bluetooth avahi-daemon dump1090-mutability dirmngr postfix motd bootlogs dphys-swapfile ssh ntp raspi-config rsync cron
+rmnologin: lighttpd rsyslog lightdm dbus triggerhappy dhcpcd bluetooth avahi-daemon dump1090-mutability dirmngr postfix motd bootlogs dphys-swapfile ssh ntp raspi-config rsync cron

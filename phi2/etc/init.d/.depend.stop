@@ -1,0 +1,9 @@
+TARGETS = unattended-upgrades triggerhappy dhcpcd fake-hwclock dump1090-mutability dirmngr lighttpd postfix lightdm bluetooth avahi-daemon urandom alsa-utils plymouth sendsigs rsyslog umountnfs.sh rpcbind nfs-common hwclock.sh networking umountfs umountroot halt reboot
+sendsigs: plymouth lighttpd lightdm triggerhappy bluetooth avahi-daemon unattended-upgrades dump1090-mutability dirmngr postfix alsa-utils
+rsyslog: lighttpd bluetooth avahi-daemon sendsigs postfix
+umountnfs.sh: plymouth lighttpd lightdm triggerhappy bluetooth avahi-daemon unattended-upgrades sendsigs rsyslog dump1090-mutability dirmngr postfix alsa-utils
+networking: lighttpd umountnfs.sh rpcbind dirmngr postfix
+umountfs: plymouth urandom networking lighttpd lightdm triggerhappy dhcpcd umountnfs.sh bluetooth avahi-daemon unattended-upgrades dump1090-mutability rpcbind dirmngr postfix hwclock.sh alsa-utils
+umountroot: umountfs fake-hwclock
+halt: umountroot
+reboot: umountroot
